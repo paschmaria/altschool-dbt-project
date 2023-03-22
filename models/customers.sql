@@ -1,20 +1,13 @@
-{{ config(materialized = 'table') }}
+{{ config(materialized="table") }}
 
 with
     customers as (
-        select
-            id as customer_id,
-            first_name,
-            last_name,
+        select id as customer_id, first_name, last_name,
         from `plurimart-dev.staging.customers`
     ),
 
     orders as (
-        select
-            id as order_id,
-            user_id as customer_id,
-            order_date,
-            status
+        select id as order_id, user_id as customer_id, order_date, status
         from `plurimart-dev.staging.orders`
     ),
 
@@ -38,12 +31,9 @@ with
     ),
 
     customer_payments as (
-        select
-            orders.customer_id,
-            sum(amount) as total_amount
+        select orders.customer_id, sum(amount) as total_amount
         from payments
-        left join orders
-            on payments.order_id = orders.order_id
+        left join orders on payments.order_id = orders.order_id
         group by orders.customer_id
     ),
 
@@ -57,10 +47,10 @@ with
             customer_orders.number_of_orders,
             customer_payments.total_amount
         from customers
-        left join customer_orders
-            on customer_orders.customer_id = customers.customer_id
-        left join customer_payments
-            on customer_payments.customer_id = customers.customer_id
+        left join customer_orders on customer_orders.customer_id = customers.customer_id
+        left join
+            customer_payments on customer_payments.customer_id = customers.customer_id
     )
 
-    select * from final
+select *
+from final
