@@ -1,0 +1,5 @@
+version: 2
+
+models:
+  - name: customers
+    description: Aggregated information on customers
