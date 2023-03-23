@@ -1,0 +1,18 @@
+version: 2
+
+sources:
+  - name: paystack
+    schema: staging
+    description: Data loaded into our data warehouse from source systems
+    tables:
+      - name: payments
+        description: Table containing individual customer's payment information
+        freshness: 
+          warn_after:
+            count: 1
+            period: day
+          error_after:
+            count: 2
+            period: day
+        loaded_at_field: _batched_at
+        
