@@ -3,3 +3,21 @@ version: 2
 models:
   - name: stg_paystack__payments
     description: View built on payments table
+    columns:
+      - name: payment_id
+        tests:
+          - not_null
+          - unique
+      - name: order_id
+        tests:
+          - relationships:
+              field: order_id
+              to: ref('stg_jaffle_shop__orders')
+      - name: payment_method
+        tests:
+          - accepted_values:
+              values: ['coupon', 'gift_card', 'credit_card', 'bank_transfer']
+      - name: status
+        tests:
+          - accepted_values:
+              values: ['fail', 'success']
