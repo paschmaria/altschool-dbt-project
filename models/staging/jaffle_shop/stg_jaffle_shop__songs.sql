@@ -1,3 +1,9 @@
+{{
+    config(
+        schema = "staging"
+    )
+}}
+
 select
     artist_id,
     artist_latitude,
