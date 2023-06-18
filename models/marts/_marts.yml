@@ -24,3 +24,5 @@ models:
         description: Amount of order paid using bank transfer
       - name: amount
         description: Total amount of order placed
+  - name: dim_songs
+    description:  Wide table containing information on all songs

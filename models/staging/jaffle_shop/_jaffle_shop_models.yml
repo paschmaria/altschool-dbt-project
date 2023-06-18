@@ -24,3 +24,51 @@ models:
         tests:
           - accepted_values:
               values: ["placed", "shipped", "returned", "completed", "return_pending"]
+  - name: stg_jaffle_shop__songs
+    description: View built for songs table
+    columns:
+      - name: song_id
+        description: Unique ID of the artist's song
+        tests:
+          - not_null
+          - unique
+      - name: artist_id
+        description: Unique ID of the artist
+        tests:
+          - not_null
+      - name: track_id
+        description: Song track ID
+      - name: artist_latitude
+        description: Artist's latitude as at song release
+      - name: artist_location
+        description: Artist's location as at song release
+      - name: artist_longitude
+        description: Artist's longitude as at song release
+      - name: artist_name
+        description: Artist's name (first and last)
+      - name: danceability
+        description: Song danceability score
+      - name: duration
+        description: Song duration
+      - name: energy
+        description: Song energy level
+      - name: key
+        description: Song key
+      - name: key_confidence
+        description: Song key confidence score
+      - name: loudness
+        description: Song loudness
+      - name: mode
+        description: Song mode
+      - name: mode_confidence
+        description: Song mode confidence score
+      - name: release
+        description: Song release
+      - name: song_hotttnesss
+        description: Song hottness score
+      - name: tempo
+        description: Song tempo
+      - name: title
+        description: Song title
+      - name: year
+        description: Song year
