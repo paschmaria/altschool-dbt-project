@@ -18,3 +18,5 @@ sources:
         freshness: null
       - name: orders
         description: Table containing individual customer orders
+      - name: songs
+        description: Table containing individual songs
